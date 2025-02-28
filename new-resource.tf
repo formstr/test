@@ -159,7 +159,4 @@ variable "web-port" {
   default = 80
 }
 
-variable "rdp-port" {
-  type    = number
-  default = 3389
-}
+#managed by rob#
