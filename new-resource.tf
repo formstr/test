@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rob-rg"
+  name     = "rg-rob"
   location = "centralindia"
 }
 resource "azurerm_virtual_network" "vnet" {
