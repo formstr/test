@@ -1,15 +1,15 @@
-resource "azurerm_resource_group" "rg" {
-  name     = "rob-rg"
-  location = "centralindia"
-}
-resource "azurerm_virtual_network" "vnet" {
-  name                = "rob-network"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  address_space       = ["10.0.0.0/16"]
-  dns_servers         = ["10.0.0.4", "10.0.0.5", "8.8.8.8"]
-  depends_on          = [azurerm_resource_group.rg]
-}
+# resource "azurerm_resource_group" "rg" {
+#   name     = "rob-rg"
+#   location = "centralindia"
+# }
+# resource "azurerm_virtual_network" "vnet" {
+#   name                = "rob-network"
+#   location            = azurerm_resource_group.rg.location
+#   resource_group_name = azurerm_resource_group.rg.name
+#   address_space       = ["10.0.0.0/16"]
+#   dns_servers         = ["10.0.0.4", "10.0.0.5", "8.8.8.8"]
+#   depends_on          = [azurerm_resource_group.rg]
+# }
 
 # resource "azurerm_subnet" "sub" {
 #   name                 = "rob-subnet"
@@ -308,16 +308,16 @@ resource "azurerm_virtual_network" "vnet" {
 #   }
 
 # }
-resource "azurerm_storage_account" "storage" {
-  name                     = "robfunkynameforstorage"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
+# resource "azurerm_storage_account" "storage" {
+#   name                     = "robfunkynameforstorage"
+#   resource_group_name      = azurerm_resource_group.rg.name
+#   location                 = azurerm_resource_group.rg.location
+#   account_tier             = "Standard"
+#   account_replication_type = "LRS"
+# }
 
-resource "azurerm_storage_container" "storagecontainer" {
-  name                  = "linux-container"
-  storage_account_id    = azurerm_storage_account.storage.id
-  container_access_type = "private"
-}
+# resource "azurerm_storage_container" "storagecontainer" {
+#   name                  = "linux-container"
+#   storage_account_id    = azurerm_storage_account.storage.id
+#   container_access_type = "private"
+# }
