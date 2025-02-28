@@ -123,4 +123,28 @@ resource "azurerm_network_interface_security_group_association" "rob-linux-insg-
   depends_on                = [azurerm_network_interface.nic, azurerm_network_security_group.rob-linux-sg]
 }
 
+resource "azurerm_linux_virtual_machine" "linux-vm" {
+  name                            = local.vm_name[terraform.workspace]
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = azurerm_resource_group.rg.location
+  size                            = local.vm_size[terraform.workspace]
+  admin_username                  = "rob"
+  admin_password                  = "easy@1"
+  disable_password_authentication = "false"
+  network_interface_ids = [
+    azurerm_network_interface.nic.id
+  ]
 
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+
+}
